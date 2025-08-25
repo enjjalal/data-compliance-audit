@@ -1,0 +1,395 @@
+{
+  "data_flows": [],
+  "user_access_summary": {
+    "analyst_john": {
+      "total_accesses": 194,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T00:53:41.412499",
+      "role": "data_analyst",
+      "compliance_level": {
+        "standard": 194
+      }
+    },
+    "data_scientist_sarah": {
+      "total_accesses": 172,
+      "tables_accessed": 4,
+      "last_access": "2025-08-25T21:53:10.396692",
+      "role": "data_scientist",
+      "compliance_level": {
+        "standard": 172
+      }
+    },
+    "marketing_amy": {
+      "total_accesses": 172,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T04:07:56.022155",
+      "role": "marketing",
+      "compliance_level": {
+        "standard": 172
+      }
+    },
+    "compliance_officer_mike": {
+      "total_accesses": 180,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T04:16:44.531183",
+      "role": "compliance",
+      "compliance_level": {
+        "compliant": 180
+      }
+    },
+    "engineer_lisa": {
+      "total_accesses": 183,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T03:30:10.873208",
+      "role": "data_engineer",
+      "compliance_level": {
+        "standard": 183
+      }
+    },
+    "manager_david": {
+      "total_accesses": 163,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T17:28:55.801203",
+      "role": "management",
+      "compliance_level": {
+        "standard": 163
+      }
+    },
+    "auditor_emma": {
+      "total_accesses": 189,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T14:32:32.197763",
+      "role": "audit",
+      "compliance_level": {
+        "compliant": 189
+      }
+    },
+    "developer_tom": {
+      "total_accesses": 177,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T02:17:30.122723",
+      "role": "developer",
+      "compliance_level": {
+        "standard": 177
+      }
+    },
+    "analyst_rachel": {
+      "total_accesses": 192,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T17:36:16.595129",
+      "role": "data_analyst",
+      "compliance_level": {
+        "standard": 192
+      }
+    },
+    "admin_sam": {
+      "total_accesses": 178,
+      "tables_accessed": 4,
+      "last_access": "2025-08-26T12:24:00.570066",
+      "role": "administrator",
+      "compliance_level": {
+        "standard": 178
+      }
+    }
+  },
+  "table_access_summary": {
+    "users": {
+      "total_accesses": 472,
+      "unique_users": 10,
+      "actions_performed": {
+        "VIEW": 171,
+        "SELECT": 141,
+        "ANALYZE": 111,
+        "BACKUP": 17,
+        "EXPORT": 17,
+        "RESTORE": 15
+      },
+      "last_accessed": "2025-08-26T17:36:16.595129",
+      "is_sensitive": true
+    },
+    "transactions": {
+      "total_accesses": 476,
+      "unique_users": 10,
+      "actions_performed": {
+        "VIEW": 151,
+        "ANALYZE": 149,
+        "SELECT": 141,
+        "RESTORE": 12,
+        "EXPORT": 12,
+        "BACKUP": 11
+      },
+      "last_accessed": "2025-08-26T07:38:30.153472",
+      "is_sensitive": false
+    },
+    "logs": {
+      "total_accesses": 437,
+      "unique_users": 10,
+      "actions_performed": {
+        "VIEW": 130,
+        "SELECT": 128,
+        "ANALYZE": 122,
+        "BACKUP": 24,
+        "EXPORT": 19,
+        "RESTORE": 14
+      },
+      "last_accessed": "2025-08-26T04:16:44.531183",
+      "is_sensitive": false
+    },
+    "marketing_emails": {
+      "total_accesses": 415,
+      "unique_users": 10,
+      "actions_performed": {
+        "SELECT": 147,
+        "VIEW": 131,
+        "ANALYZE": 88,
+        "RESTORE": 21,
+        "BACKUP": 15,
+        "EXPORT": 13
+      },
+      "last_accessed": "2025-08-26T17:28:55.801203",
+      "is_sensitive": true
+    }
+  },
+  "compliance_issues": [
+    {
+      "timestamp": "2025-07-28T08:43:39.472584",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-07-29T15:13:46.630757",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-07-31T23:06:23.328252",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "users",
+      "issue": "Sensitive table users exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-01T19:06:33.499660",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-02T11:03:45.583752",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-02T18:24:52.636972",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-03T06:21:55.907738",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-03T22:00:25.587291",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-06T13:25:09.679852",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-07T16:32:56.937526",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-08T13:26:40.321335",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-09T00:27:30.645333",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-09T01:56:54.971372",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "users",
+      "issue": "Sensitive table users exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-11T16:35:40.687754",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-12T08:52:44.709063",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-13T07:34:41.256768",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-13T12:21:05.996129",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "users",
+      "issue": "Sensitive table users exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-14T19:22:56.924406",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-15T11:12:41.552819",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-15T23:51:42.023262",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "users",
+      "issue": "Sensitive table users exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-18T05:34:42.047514",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-18T20:32:14.673337",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-21T06:01:23.439974",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-22T07:15:11.760514",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "users",
+      "issue": "Sensitive table users exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-22T13:58:26.606383",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "users",
+      "issue": "Sensitive table users exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-22T15:13:01.409219",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-22T19:33:27.899972",
+      "user": "auditor_emma",
+      "role": "audit",
+      "table": "users",
+      "issue": "Sensitive table users exported by audit",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-24T03:32:17.936231",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "users",
+      "issue": "Sensitive table users exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-24T13:29:19.802649",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by compliance",
+      "severity": "medium"
+    },
+    {
+      "timestamp": "2025-08-25T03:42:01.395000",
+      "user": "compliance_officer_mike",
+      "role": "compliance",
+      "table": "marketing_emails",
+      "issue": "Sensitive table marketing_emails exported by compliance",
+      "severity": "medium"
+    }
+  ]
+}

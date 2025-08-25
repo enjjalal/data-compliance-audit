@@ -1,0 +1,373 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Data Lineage & Access Patterns Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; background-color: #f8f9fa; }
+                .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+                .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+                .header h1 { margin: 0; }
+                .header p { margin: 5px 0 0 0; opacity: 0.9; }
+                
+                .section { margin: 20px 0; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px; }
+                .section h3 { color: #495057; border-bottom: 2px solid #dee2e6; padding-bottom: 10px; }
+                
+                .heatmap-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+                .heatmap-table th, .heatmap-table td { border: 1px solid #dee2e6; padding: 8px; text-align: center; }
+                .heatmap-table th { background-color: #f8f9fa; font-weight: bold; }
+                .role-cell { font-weight: bold; background-color: #e9ecef; }
+                .heatmap-cell { font-weight: bold; }
+                
+                .timeline-container { margin: 15px 0; }
+                .timeline-day { margin: 15px 0; padding: 15px; background-color: #f8f9fa; border-radius: 5px; }
+                .timeline-day h4 { margin: 0 0 10px 0; color: #495057; }
+                .timeline-day ul { margin: 0; padding-left: 20px; }
+                .timeline-day li { margin: 5px 0; }
+                
+                .compliance-issue { margin: 15px 0; padding: 15px; border-radius: 5px; border-left: 5px solid; }
+                .severity-high { background-color: #f8d7da; border-left-color: #dc3545; }
+                .severity-medium { background-color: #fff3cd; border-left-color: #ffc107; }
+                .severity-low { background-color: #d1ecf1; border-left-color: #17a2b8; }
+                
+                .flow-diagram { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 20px 0; }
+                .flow-node { padding: 20px; border: 2px solid #dee2e6; border-radius: 8px; text-align: center; min-width: 150px; }
+                .sensitive-table { border-color: #dc3545; background-color: #f8d7da; }
+                .standard-table { border-color: #28a745; background-color: #d4edda; }
+                .flow-arrow { font-size: 24px; color: #6c757d; }
+                
+                .no-issues { color: #28a745; font-weight: bold; }
+                .issues-count { color: #dc3545; font-weight: bold; }
+                
+                .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+                .stat-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
+                .stat-card h3 { margin: 0 0 10px 0; color: #495057; }
+                .stat-card .number { font-size: 2em; font-weight: bold; color: #667eea; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>🔗 Data Lineage & Access Patterns Report</h1>
+                    <p>Generated: 2025-08-25 20:04:57</p>
+                </div>
+        
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Accesses</h3>
+                    <div class="number">1,800</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Unique Users</h3>
+                    <div class="number">10</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Tables Accessed</h3>
+                    <div class="number">4</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Date Range</h3>
+                    <div class="number">2025-07-26 to 2025-08-26</div>
+                </div>
+            </div>
+            
+        <div class="heatmap-section">
+            <h3>📊 Access Heatmap by Role and Table</h3>
+            <div class="heatmap-container">
+                <table class="heatmap-table">
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+        <th>logs</th><th>marketing_emails</th><th>transactions</th><th>users</th></tr></thead><tbody><tr><td class='role-cell'>administrator</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.36)">48</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.24)">33</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.33)">44</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.39)">53</td></tr><tr><td class='role-cell'>audit</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.41)">56</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.39)">53</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.24)">32</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.36)">48</td></tr><tr><td class='role-cell'>compliance</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.42)">57</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.32)">43</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.27)">36</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.33)">44</td></tr><tr><td class='role-cell'>data_analyst</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.62)">84</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.30)">40</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,1.00)">135</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.94)">127</td></tr><tr><td class='role-cell'>data_engineer</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.38)">51</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.30)">41</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.40)">54</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.27)">37</td></tr><tr><td class='role-cell'>data_scientist</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.27)">36</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.30)">41</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.40)">54</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.30)">41</td></tr><tr><td class='role-cell'>developer</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.36)">49</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.26)">35</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.32)">43</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.37)">50</td></tr><tr><td class='role-cell'>management</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.27)">37</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.30)">40</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.35)">47</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.29)">39</td></tr><tr><td class='role-cell'>marketing</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.14)">19</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.66)">89</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.23)">31</td><td class="heatmap-cell" style="background-color: rgba(0,123,255,0.24)">33</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        
+        <div class="timeline-section">
+            <h3>⏰ User Activity Timeline (Last 30 Days)</h3>
+            <div class="timeline-container">
+        <div class="timeline-day"><h4>2025-07-26</h4><ul><li><strong>manager_david</strong>: 1 accesses</li></ul></div><div class="timeline-day"><h4>2025-07-27</h4><ul><li><strong>admin_sam</strong>: 2 accesses</li><li><strong>analyst_john</strong>: 4 accesses</li><li><strong>analyst_rachel</strong>: 3 accesses</li><li><strong>auditor_emma</strong>: 2 accesses</li><li><strong>compliance_officer_mike</strong>: 5 accesses</li><li><strong>data_scientist_sarah</strong>: 5 accesses</li><li><strong>developer_tom</strong>: 4 accesses</li><li><strong>engineer_lisa</strong>: 2 accesses</li><li><strong>manager_david</strong>: 3 accesses</li><li><strong>marketing_amy</strong>: 1 accesses</li></ul></div><div class="timeline-day"><h4>2025-07-28</h4><ul><li><strong>admin_sam</strong>: 7 accesses</li><li><strong>analyst_john</strong>: 7 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 10 accesses</li><li><strong>compliance_officer_mike</strong>: 3 accesses</li><li><strong>data_scientist_sarah</strong>: 8 accesses</li><li><strong>developer_tom</strong>: 4 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 5 accesses</li><li><strong>marketing_amy</strong>: 3 accesses</li></ul></div><div class="timeline-day"><h4>2025-07-29</h4><ul><li><strong>admin_sam</strong>: 7 accesses</li><li><strong>analyst_john</strong>: 8 accesses</li><li><strong>analyst_rachel</strong>: 10 accesses</li><li><strong>auditor_emma</strong>: 5 accesses</li><li><strong>compliance_officer_mike</strong>: 7 accesses</li><li><strong>data_scientist_sarah</strong>: 7 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 9 accesses</li><li><strong>manager_david</strong>: 7 accesses</li><li><strong>marketing_amy</strong>: 7 accesses</li></ul></div><div class="timeline-day"><h4>2025-07-30</h4><ul><li><strong>admin_sam</strong>: 5 accesses</li><li><strong>analyst_john</strong>: 8 accesses</li><li><strong>analyst_rachel</strong>: 5 accesses</li><li><strong>auditor_emma</strong>: 8 accesses</li><li><strong>compliance_officer_mike</strong>: 6 accesses</li><li><strong>data_scientist_sarah</strong>: 8 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 10 accesses</li><li><strong>manager_david</strong>: 5 accesses</li><li><strong>marketing_amy</strong>: 3 accesses</li></ul></div><div class="timeline-day"><h4>2025-07-31</h4><ul><li><strong>admin_sam</strong>: 6 accesses</li><li><strong>analyst_john</strong>: 3 accesses</li><li><strong>analyst_rachel</strong>: 8 accesses</li><li><strong>auditor_emma</strong>: 8 accesses</li><li><strong>compliance_officer_mike</strong>: 9 accesses</li><li><strong>data_scientist_sarah</strong>: 1 accesses</li><li><strong>developer_tom</strong>: 10 accesses</li><li><strong>engineer_lisa</strong>: 13 accesses</li><li><strong>manager_david</strong>: 8 accesses</li><li><strong>marketing_amy</strong>: 3 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-01</h4><ul><li><strong>admin_sam</strong>: 5 accesses</li><li><strong>analyst_john</strong>: 8 accesses</li><li><strong>analyst_rachel</strong>: 9 accesses</li><li><strong>auditor_emma</strong>: 7 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 11 accesses</li><li><strong>developer_tom</strong>: 4 accesses</li><li><strong>engineer_lisa</strong>: 4 accesses</li><li><strong>manager_david</strong>: 8 accesses</li><li><strong>marketing_amy</strong>: 6 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-02</h4><ul><li><strong>admin_sam</strong>: 4 accesses</li><li><strong>analyst_john</strong>: 5 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 10 accesses</li><li><strong>compliance_officer_mike</strong>: 7 accesses</li><li><strong>data_scientist_sarah</strong>: 5 accesses</li><li><strong>developer_tom</strong>: 3 accesses</li><li><strong>engineer_lisa</strong>: 5 accesses</li><li><strong>manager_david</strong>: 4 accesses</li><li><strong>marketing_amy</strong>: 4 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-03</h4><ul><li><strong>admin_sam</strong>: 4 accesses</li><li><strong>analyst_john</strong>: 5 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 7 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 7 accesses</li><li><strong>developer_tom</strong>: 6 accesses</li><li><strong>engineer_lisa</strong>: 2 accesses</li><li><strong>manager_david</strong>: 3 accesses</li><li><strong>marketing_amy</strong>: 3 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-04</h4><ul><li><strong>admin_sam</strong>: 6 accesses</li><li><strong>analyst_john</strong>: 3 accesses</li><li><strong>analyst_rachel</strong>: 7 accesses</li><li><strong>auditor_emma</strong>: 6 accesses</li><li><strong>compliance_officer_mike</strong>: 3 accesses</li><li><strong>data_scientist_sarah</strong>: 4 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 4 accesses</li><li><strong>manager_david</strong>: 1 accesses</li><li><strong>marketing_amy</strong>: 12 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-05</h4><ul><li><strong>admin_sam</strong>: 7 accesses</li><li><strong>analyst_john</strong>: 8 accesses</li><li><strong>analyst_rachel</strong>: 11 accesses</li><li><strong>auditor_emma</strong>: 3 accesses</li><li><strong>compliance_officer_mike</strong>: 8 accesses</li><li><strong>data_scientist_sarah</strong>: 4 accesses</li><li><strong>developer_tom</strong>: 5 accesses</li><li><strong>engineer_lisa</strong>: 3 accesses</li><li><strong>manager_david</strong>: 2 accesses</li><li><strong>marketing_amy</strong>: 4 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-06</h4><ul><li><strong>admin_sam</strong>: 5 accesses</li><li><strong>analyst_john</strong>: 5 accesses</li><li><strong>analyst_rachel</strong>: 7 accesses</li><li><strong>auditor_emma</strong>: 7 accesses</li><li><strong>compliance_officer_mike</strong>: 5 accesses</li><li><strong>data_scientist_sarah</strong>: 5 accesses</li><li><strong>developer_tom</strong>: 3 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 3 accesses</li><li><strong>marketing_amy</strong>: 4 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-07</h4><ul><li><strong>admin_sam</strong>: 7 accesses</li><li><strong>analyst_john</strong>: 5 accesses</li><li><strong>analyst_rachel</strong>: 3 accesses</li><li><strong>auditor_emma</strong>: 2 accesses</li><li><strong>compliance_officer_mike</strong>: 5 accesses</li><li><strong>data_scientist_sarah</strong>: 4 accesses</li><li><strong>developer_tom</strong>: 2 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 4 accesses</li><li><strong>marketing_amy</strong>: 8 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-08</h4><ul><li><strong>admin_sam</strong>: 5 accesses</li><li><strong>analyst_john</strong>: 10 accesses</li><li><strong>analyst_rachel</strong>: 3 accesses</li><li><strong>auditor_emma</strong>: 8 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 4 accesses</li><li><strong>developer_tom</strong>: 4 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 10 accesses</li><li><strong>marketing_amy</strong>: 6 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-09</h4><ul><li><strong>admin_sam</strong>: 9 accesses</li><li><strong>analyst_john</strong>: 7 accesses</li><li><strong>analyst_rachel</strong>: 2 accesses</li><li><strong>auditor_emma</strong>: 5 accesses</li><li><strong>compliance_officer_mike</strong>: 5 accesses</li><li><strong>data_scientist_sarah</strong>: 7 accesses</li><li><strong>developer_tom</strong>: 5 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 6 accesses</li><li><strong>marketing_amy</strong>: 8 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-10</h4><ul><li><strong>admin_sam</strong>: 11 accesses</li><li><strong>analyst_john</strong>: 7 accesses</li><li><strong>analyst_rachel</strong>: 7 accesses</li><li><strong>auditor_emma</strong>: 5 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 6 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 12 accesses</li><li><strong>manager_david</strong>: 6 accesses</li><li><strong>marketing_amy</strong>: 7 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-11</h4><ul><li><strong>admin_sam</strong>: 3 accesses</li><li><strong>analyst_john</strong>: 11 accesses</li><li><strong>analyst_rachel</strong>: 4 accesses</li><li><strong>auditor_emma</strong>: 6 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 5 accesses</li><li><strong>developer_tom</strong>: 4 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 4 accesses</li><li><strong>marketing_amy</strong>: 7 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-12</h4><ul><li><strong>admin_sam</strong>: 8 accesses</li><li><strong>analyst_john</strong>: 6 accesses</li><li><strong>analyst_rachel</strong>: 3 accesses</li><li><strong>auditor_emma</strong>: 5 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 7 accesses</li><li><strong>developer_tom</strong>: 12 accesses</li><li><strong>engineer_lisa</strong>: 7 accesses</li><li><strong>manager_david</strong>: 5 accesses</li><li><strong>marketing_amy</strong>: 6 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-13</h4><ul><li><strong>admin_sam</strong>: 4 accesses</li><li><strong>analyst_john</strong>: 7 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 7 accesses</li><li><strong>compliance_officer_mike</strong>: 7 accesses</li><li><strong>data_scientist_sarah</strong>: 3 accesses</li><li><strong>developer_tom</strong>: 2 accesses</li><li><strong>engineer_lisa</strong>: 4 accesses</li><li><strong>manager_david</strong>: 8 accesses</li><li><strong>marketing_amy</strong>: 6 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-14</h4><ul><li><strong>admin_sam</strong>: 10 accesses</li><li><strong>analyst_john</strong>: 4 accesses</li><li><strong>analyst_rachel</strong>: 8 accesses</li><li><strong>auditor_emma</strong>: 9 accesses</li><li><strong>compliance_officer_mike</strong>: 9 accesses</li><li><strong>data_scientist_sarah</strong>: 4 accesses</li><li><strong>developer_tom</strong>: 4 accesses</li><li><strong>engineer_lisa</strong>: 11 accesses</li><li><strong>manager_david</strong>: 5 accesses</li><li><strong>marketing_amy</strong>: 6 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-15</h4><ul><li><strong>admin_sam</strong>: 4 accesses</li><li><strong>analyst_john</strong>: 6 accesses</li><li><strong>analyst_rachel</strong>: 9 accesses</li><li><strong>auditor_emma</strong>: 11 accesses</li><li><strong>compliance_officer_mike</strong>: 6 accesses</li><li><strong>data_scientist_sarah</strong>: 2 accesses</li><li><strong>developer_tom</strong>: 5 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 8 accesses</li><li><strong>marketing_amy</strong>: 7 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-16</h4><ul><li><strong>admin_sam</strong>: 6 accesses</li><li><strong>analyst_john</strong>: 6 accesses</li><li><strong>analyst_rachel</strong>: 4 accesses</li><li><strong>auditor_emma</strong>: 6 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 6 accesses</li><li><strong>developer_tom</strong>: 6 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 5 accesses</li><li><strong>marketing_amy</strong>: 4 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-17</h4><ul><li><strong>admin_sam</strong>: 9 accesses</li><li><strong>analyst_john</strong>: 6 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 7 accesses</li><li><strong>compliance_officer_mike</strong>: 10 accesses</li><li><strong>data_scientist_sarah</strong>: 5 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 3 accesses</li><li><strong>manager_david</strong>: 7 accesses</li><li><strong>marketing_amy</strong>: 7 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-18</h4><ul><li><strong>admin_sam</strong>: 4 accesses</li><li><strong>analyst_rachel</strong>: 5 accesses</li><li><strong>auditor_emma</strong>: 9 accesses</li><li><strong>compliance_officer_mike</strong>: 6 accesses</li><li><strong>data_scientist_sarah</strong>: 8 accesses</li><li><strong>developer_tom</strong>: 8 accesses</li><li><strong>engineer_lisa</strong>: 2 accesses</li><li><strong>manager_david</strong>: 3 accesses</li><li><strong>marketing_amy</strong>: 6 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-19</h4><ul><li><strong>admin_sam</strong>: 6 accesses</li><li><strong>analyst_john</strong>: 7 accesses</li><li><strong>analyst_rachel</strong>: 8 accesses</li><li><strong>auditor_emma</strong>: 4 accesses</li><li><strong>compliance_officer_mike</strong>: 4 accesses</li><li><strong>data_scientist_sarah</strong>: 3 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 8 accesses</li><li><strong>manager_david</strong>: 6 accesses</li><li><strong>marketing_amy</strong>: 5 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-20</h4><ul><li><strong>admin_sam</strong>: 3 accesses</li><li><strong>analyst_john</strong>: 6 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 7 accesses</li><li><strong>compliance_officer_mike</strong>: 6 accesses</li><li><strong>data_scientist_sarah</strong>: 6 accesses</li><li><strong>developer_tom</strong>: 6 accesses</li><li><strong>engineer_lisa</strong>: 6 accesses</li><li><strong>manager_david</strong>: 3 accesses</li><li><strong>marketing_amy</strong>: 12 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-21</h4><ul><li><strong>admin_sam</strong>: 6 accesses</li><li><strong>analyst_john</strong>: 8 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 5 accesses</li><li><strong>compliance_officer_mike</strong>: 3 accesses</li><li><strong>data_scientist_sarah</strong>: 7 accesses</li><li><strong>developer_tom</strong>: 8 accesses</li><li><strong>engineer_lisa</strong>: 4 accesses</li><li><strong>manager_david</strong>: 4 accesses</li><li><strong>marketing_amy</strong>: 7 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-22</h4><ul><li><strong>admin_sam</strong>: 3 accesses</li><li><strong>analyst_john</strong>: 4 accesses</li><li><strong>analyst_rachel</strong>: 10 accesses</li><li><strong>auditor_emma</strong>: 4 accesses</li><li><strong>compliance_officer_mike</strong>: 8 accesses</li><li><strong>data_scientist_sarah</strong>: 8 accesses</li><li><strong>developer_tom</strong>: 12 accesses</li><li><strong>engineer_lisa</strong>: 8 accesses</li><li><strong>manager_david</strong>: 5 accesses</li><li><strong>marketing_amy</strong>: 4 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-23</h4><ul><li><strong>admin_sam</strong>: 10 accesses</li><li><strong>analyst_john</strong>: 8 accesses</li><li><strong>analyst_rachel</strong>: 5 accesses</li><li><strong>auditor_emma</strong>: 6 accesses</li><li><strong>compliance_officer_mike</strong>: 5 accesses</li><li><strong>data_scientist_sarah</strong>: 7 accesses</li><li><strong>developer_tom</strong>: 3 accesses</li><li><strong>engineer_lisa</strong>: 5 accesses</li><li><strong>manager_david</strong>: 7 accesses</li><li><strong>marketing_amy</strong>: 8 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-24</h4><ul><li><strong>admin_sam</strong>: 8 accesses</li><li><strong>analyst_john</strong>: 12 accesses</li><li><strong>analyst_rachel</strong>: 6 accesses</li><li><strong>auditor_emma</strong>: 5 accesses</li><li><strong>compliance_officer_mike</strong>: 11 accesses</li><li><strong>data_scientist_sarah</strong>: 9 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 2 accesses</li><li><strong>manager_david</strong>: 5 accesses</li><li><strong>marketing_amy</strong>: 3 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-25</h4><ul><li><strong>admin_sam</strong>: 3 accesses</li><li><strong>analyst_john</strong>: 9 accesses</li><li><strong>analyst_rachel</strong>: 8 accesses</li><li><strong>auditor_emma</strong>: 4 accesses</li><li><strong>compliance_officer_mike</strong>: 13 accesses</li><li><strong>data_scientist_sarah</strong>: 6 accesses</li><li><strong>developer_tom</strong>: 7 accesses</li><li><strong>engineer_lisa</strong>: 8 accesses</li><li><strong>manager_david</strong>: 10 accesses</li><li><strong>marketing_amy</strong>: 3 accesses</li></ul></div><div class="timeline-day"><h4>2025-08-26</h4><ul><li><strong>admin_sam</strong>: 1 accesses</li><li><strong>analyst_john</strong>: 1 accesses</li><li><strong>analyst_rachel</strong>: 5 accesses</li><li><strong>auditor_emma</strong>: 1 accesses</li><li><strong>compliance_officer_mike</strong>: 1 accesses</li><li><strong>developer_tom</strong>: 1 accesses</li><li><strong>engineer_lisa</strong>: 3 accesses</li><li><strong>manager_david</strong>: 2 accesses</li><li><strong>marketing_amy</strong>: 2 accesses</li></ul></div>
+            </div>
+        </div>
+        
+        <div class="compliance-section">
+            <h3>🚨 Compliance Issues Detected</h3>
+        <p class="issues-count">Found 30 potential compliance issues:</p><div class="issues-list">
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-07-28T08:43:39.472584</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-07-29T15:13:46.630757</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-07-31T23:06:23.328252</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-01T19:06:33.499660</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-02T11:03:45.583752</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-02T18:24:52.636972</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-03T06:21:55.907738</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-03T22:00:25.587291</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-06T13:25:09.679852</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-07T16:32:56.937526</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-08T13:26:40.321335</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-09T00:27:30.645333</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-09T01:56:54.971372</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-11T16:35:40.687754</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-12T08:52:44.709063</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-13T07:34:41.256768</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-13T12:21:05.996129</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-14T19:22:56.924406</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-15T11:12:41.552819</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-15T23:51:42.023262</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-18T05:34:42.047514</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-18T20:32:14.673337</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-21T06:01:23.439974</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-22T07:15:11.760514</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-22T13:58:26.606383</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-22T15:13:01.409219</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by audit</h4>
+                    <p><strong>User:</strong> auditor_emma (audit)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-22T19:33:27.899972</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table users exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> users</p>
+                    <p><strong>Time:</strong> 2025-08-24T03:32:17.936231</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-24T13:29:19.802649</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                
+                <div class="compliance-issue severity-medium">
+                    <h4>Sensitive table marketing_emails exported by compliance</h4>
+                    <p><strong>User:</strong> compliance_officer_mike (compliance)</p>
+                    <p><strong>Table:</strong> marketing_emails</p>
+                    <p><strong>Time:</strong> 2025-08-25T03:42:01.395000</p>
+                    <p><strong>Severity:</strong> Medium</p>
+                </div>
+                </div></div>
+        <div class="flow-section">
+            <h3>🔗 Data Flow Diagram</h3>
+            <div class="flow-diagram">
+        
+            <div class="flow-node sensitive-table">
+                <h4>users</h4>
+                <p>Accesses: 472</p>
+                <p class="table-type">🔒 Sensitive</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node standard-table">
+                <h4>transactions</h4>
+                <p>Accesses: 476</p>
+                <p class="table-type">📊 Standard</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node standard-table">
+                <h4>logs</h4>
+                <p>Accesses: 437</p>
+                <p class="table-type">📊 Standard</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node sensitive-table">
+                <h4>marketing_emails</h4>
+                <p>Accesses: 415</p>
+                <p class="table-type">🔒 Sensitive</p>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </body>
+        </html>
+        
