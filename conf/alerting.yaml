@@ -1,0 +1,50 @@
+# Alerting configuration for GDPR/PII compliance violations
+version: 1
+
+# Email alerting settings
+email:
+  enabled: true
+  recipients:
+    - data.governance@company.com
+    - compliance.team@company.com
+  smtp:
+    server: localhost
+    port: 25
+    use_tls: false
+  
+# Alert thresholds and frequency
+alerting:
+  threshold: 1  # Alert if 1 or more violations
+  frequency_hours: 24  # Maximum alert frequency
+  escalation_hours: 72  # Escalate if unresolved after 72 hours
+  
+# Alert channels
+channels:
+  console: true
+  email: true
+  slack: false  # Future enhancement
+  teams: false  # Future enhancement
+  
+# Violation severity levels
+severity:
+  critical:
+    - no_pii_in_logs
+    - no_pii_in_exports
+  high:
+    - pii_must_be_tagged
+  medium:
+    - default
+  
+# Notification templates
+templates:
+  subject: "🚨 GDPR/PII Compliance Violation Alert"
+  body: |
+    Compliance violations detected in data environment.
+    
+    Violations: {violation_count}
+    Critical: {critical_count}
+    High: {high_count}
+    
+    Please review and resolve these issues promptly.
+    
+    Generated: {timestamp}

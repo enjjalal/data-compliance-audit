@@ -1,0 +1,19 @@
+[
+  {
+    "timestamp": "2025-08-25T19:50:06.117794",
+    "violations_count": 1,
+    "violations": [
+      {
+        "policy_id": "no_pii_in_logs",
+        "table": "logs",
+        "column": "user_email",
+        "pii_tags": "email",
+        "reason": "PII email found in logs table - policy violation",
+        "detected_at": "2025-08-25T19:50:06.108306",
+        "status": "open",
+        "alerted": false
+      }
+    ],
+    "alert_type": "email"
+  }
+]
