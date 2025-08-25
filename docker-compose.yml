@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - ./outputs:/app/outputs
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+    depends_on:
+      - db
+    networks:
+      - app-network
+    command: >
+      sh -c "python -m pip install --upgrade pip &&
+             pip install -r requirements.txt &&
+             streamlit run audit_dashboard/app.py"
+
+  db:
+    image: sqlite:3.36
+    volumes:
+      - ./data:/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
