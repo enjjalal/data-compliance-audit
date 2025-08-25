@@ -1,0 +1,8 @@
+table,column,pii_tags,reason
+marketing_emails,email,email,name:email
+marketing_emails,unsubscribe_date,dob,value:dob
+transactions,ip_address,"ip,phone","name:ip,value:phone"
+users,full_name,name,name:name
+users,email,email,name:email
+users,phone_number,phone,value:phone
+users,dob,"dob,phone","name:dob,value:phone"
