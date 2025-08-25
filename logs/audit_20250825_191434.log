@@ -1,0 +1,9 @@
+2025-08-25 19:14:34,819 - INFO - Audit pipeline started, logging to logs\audit_20250825_191434.log
+2025-08-25 19:14:34,821 - INFO - Starting PII scan...
+2025-08-25 19:14:34,949 - INFO - PII scan completed
+2025-08-25 19:14:34,950 - INFO - Starting policy evaluation...
+2025-08-25 19:14:34,992 - INFO - Policy evaluation completed
+2025-08-25 19:14:35,001 - INFO - PII scan found 7 columns with PII
+2025-08-25 19:14:35,004 - ERROR - Failed to generate summary report: No columns to parse from file
+2025-08-25 19:14:35,007 - INFO - Audit pipeline completed successfully
+2025-08-25 19:14:35,008 - INFO - Audit pipeline completed successfully
