@@ -1,0 +1,12 @@
+dbt:
+  profile_name: compliance_sqlite
+  target: dev
+  outputs:
+    dev:
+      type: sqlite
+      threads: 1
+      database: compliance
+      schema: main
+      schemas_and_paths:
+        main: data/compliance.db
+

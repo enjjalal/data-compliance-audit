@@ -1,0 +1,17 @@
+name: "data_compliance_audit"
+version: "1.0"
+config-version: 2
+
+profile: "compliance_sqlite"
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+models:
+  data_compliance_audit:
+    +materialized: table
+    staging:
+      +schema: staging
+
